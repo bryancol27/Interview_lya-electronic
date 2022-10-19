@@ -6,7 +6,8 @@
             "@pages/*": ["pages/*"],
             "@templates/*": ["templates/*"],
             "@styles/*": ["styles/*"],
-            "@utils/*": ["utils/*"]
+            "@utils/*": ["utils/*"],
+            "@hooks/*": ["hooks/*"]
         }
     }
 }
