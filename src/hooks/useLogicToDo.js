@@ -56,11 +56,16 @@ const useLogicToDo = () => {
 
     const addToDo = (data) => {
         const newList = [...toDo];
-        const element = {
-            name: data,
-            completed: false
-        };
-        newList.push(element);
+
+        if (Array.isArray(data)) {
+            newList.push(...data);
+        } else {
+            const element = {
+                name: data,
+                completed: false
+            };
+            newList.push(element);
+        }
 
         saveNewData(newList);
     };
