@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 //Import components Needed
 import { ToDo } from '@components/toDo';
@@ -6,8 +6,11 @@ import { ToDo } from '@components/toDo';
 //Import module Styles
 import { toDoContainer } from './styles.module.scss';
 
+//Import context
+import { context } from '@context/context';
+
 //Import custom Hook
-import { useLogicToDo } from '@hooks/useLogicToDo';
+// import { useLogicToDo } from '@hooks/useLogicToDo';
 
 const ToDoContainer = () => {
 
@@ -15,7 +18,7 @@ const ToDoContainer = () => {
         toDo,
         changeCompleted,
         deleteToDo 
-    } = useLogicToDo();
+    } = useContext(context);
 
     return(
         <div className={toDoContainer}>
