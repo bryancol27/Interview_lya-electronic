@@ -6,9 +6,16 @@ const getFacts = async (fact = 0) => {
 
     //Data fetch
     const res = await fetch(baseURL);
-    const data = res.json();
+    const data = await res.json();
 
-    return data;
+    // The next functions and return make that data map in a object schema for the toDo List
+    if (fact > 1) {
+        return data.data.map((element) => {
+            return { name: element.fact, completed: false };
+        });
+    }
+
+    return data.fact;
 };
 
 export { getFacts };

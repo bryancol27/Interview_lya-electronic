@@ -4,18 +4,15 @@ import React, { useContext } from 'react';
 import { ToDo } from '@components/toDo';
 
 //Import module Styles
-import { toDoContainer } from './styles.module.scss';
+import { toDoContainer, noToDoTitle } from './styles.module.scss';
 
 //Import context
 import { context } from '@context/context';
 
-//Import custom Hook
-// import { useLogicToDo } from '@hooks/useLogicToDo';
-
 const ToDoContainer = () => {
 
-    const {         
-        toDo,
+    const {      
+        searchedToDos,
         changeCompleted,
         deleteToDo 
     } = useContext(context);
@@ -23,8 +20,10 @@ const ToDoContainer = () => {
     return(
         <div className={toDoContainer}>
 
+            { (searchedToDos.length <= 0) && <h1 className={noToDoTitle}>¡Crea tu primer ToDo!</h1> }
+
             {/* A map for each Task */}
-            { toDo.map((element, index) => 
+            { searchedToDos.map((element, index) => 
                 <ToDo 
                     key={index} 
                     index={index}

@@ -2,10 +2,16 @@
     width: 33%;
     max-width: 450px;
     min-width: 300px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 25px;
+
+    background-color: white;
+    border-radius: 25px;
+    padding: 20px 15px;
+    box-shadow: 0 1px 3px 0 rgb(78 115 222 / 40%);
 }
 
 .toDoSimbols{
@@ -24,6 +30,7 @@
 @mixin title() {
     font-size: 30px;
     font-weight: 300;
+    font-size: 1.6rem;
     transition: all 1s;
 }
 
@@ -36,7 +43,6 @@
 }
 .incompletedS{
     @include title();
-    font-weight: 500;
     opacity: 1;
     transition: all .5s;
 }

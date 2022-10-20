@@ -1,15 +1,13 @@
-import React, { useEffect } from 'react';
-
-//Import of fetch call
-import { getFacts } from '@utils/getRamdonFacts'; 
+import React from 'react';
 
 //Import of needed templates
+import { Header } from '@templates/Header';
 import { ToDoContainer } from '@templates/toDoContainer';
 
 //Import components
-import { MoreToDoBtn } from '@components/moreToDoBtn';
+import { ButtonFixed } from '@components/ButtonFixed';
 
-//Import portal
+//Import portals
 import { Modal } from '@templates/Modal';
 
 //Import custom hooks of portals
@@ -18,24 +16,29 @@ import { useShowModals } from '@hooks/useShowModals';
 // Here we call each of templates or big components
 const App = () => {
 
-    const { modalAddToDo, setModalAddToDo } = useShowModals();
-
-    useEffect(() => {
-        getFacts(0)
-            .then((res) => console.log(res));
-    }, []);
+    const { modalAddToDo, setModalAddToDo, randomAddToDo ,setRandomAddToDo } = useShowModals();
 
     return(
         <React.Fragment>
+
+            <Header/>
+
             <ToDoContainer/>
 
+            {/* Header */}
+
+
             {/* Modal to add a toDo */}
-            <Modal isShow={modalAddToDo} closeModal={ setModalAddToDo } />
+            <Modal isShow={modalAddToDo} closeModal={ setModalAddToDo } type={0}/>
             
             {/* Modal to Do random toDos */}
+            <Modal isShow={randomAddToDo} closeModal={ setRandomAddToDo } type={1}/>
 
 
-            <MoreToDoBtn openModal={ setModalAddToDo } />
+            <div className='container__button'>
+                <ButtonFixed type={ setModalAddToDo } random={false} />
+                <ButtonFixed type={ setRandomAddToDo } random={true} />
+            </div>
         </React.Fragment>
     );
 };

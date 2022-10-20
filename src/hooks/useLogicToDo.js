@@ -23,7 +23,8 @@ const useLocalStorage = () => {
 };
 
 const useLogicToDo = () => {
-    const [toDo, setToDo] = useState([]);
+    const [toDos, setToDo] = useState([]);
+    const [search, setSearch] = useState('');
 
     // Get the methods of a private state
     const { setLocalStorage, getLocalStorage } = useLocalStorage();
@@ -41,35 +42,58 @@ const useLogicToDo = () => {
 
     // Events in the toDoCards
     const changeCompleted = (index) => {
-        const newList = [...toDo];
+        const newList = [...toDos];
         newList[index].completed = !newList[index].completed;
 
         saveNewData(newList);
     };
 
     const deleteToDo = (index) => {
-        const newList = [...toDo];
+        const newList = [...toDos];
         newList.splice(index, 1);
 
         saveNewData(newList);
     };
 
     const addToDo = (data) => {
-        const newList = [...toDo];
-        const element = {
-            name: data,
-            completed: false
-        };
-        newList.push(element);
+        const newList = [...toDos];
+
+        if (Array.isArray(data)) {
+            newList.push(...data);
+        } else {
+            const element = {
+                name: data,
+                completed: false
+            };
+            newList.push(element);
+        }
 
         saveNewData(newList);
     };
 
+    //Function and var to make the search
+    let searchedToDos = [];
+
+    const searchToDoFunc = (search) => {
+        setSearch(search);
+    };
+
+    if (!search) {
+        searchedToDos = toDos;
+    } else {
+        searchedToDos = toDos.filter((toDo) => {
+            const todoText = toDo.name.toLowerCase();
+            const searchText = search.toLowerCase();
+            return todoText.includes(searchText);
+        });
+    }
+
     return {
-        toDo,
+        searchedToDos,
         changeCompleted,
         deleteToDo,
-        addToDo
+        addToDo,
+        searchToDoFunc
     };
 };
 

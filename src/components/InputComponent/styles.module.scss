@@ -1,0 +1,18 @@
+.form{
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+
+    input[type = text]{
+        border-radius: 20px;
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #4E73DE;
+        
+        &:focus{
+            outline: 2px solid #4E73DE;            
+        }
+    }
+}
