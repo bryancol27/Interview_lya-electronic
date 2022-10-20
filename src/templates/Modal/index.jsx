@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { modalContainer } from '@utils/node';
 
 // Module styles
-import { modalContainerS, modalForm } from './styles.module.scss';
+import { modalContainerS, modalForm, buttons } from './styles.module.scss';
 
 //Import Context
 import { context } from '@context/context';
@@ -60,7 +60,7 @@ const Modal = ({ isShow,  closeModal, type}) => {
                         <label htmlFor="task">{texts[type]}</label>
                         <input type="text" name='task' required/>
 
-                        <div className=''>
+                        <div className={buttons}>
                             <button 
                                 onClick={() => closeModal(false)} 
                                 type='button'

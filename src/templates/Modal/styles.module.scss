@@ -13,7 +13,7 @@
     width: 100%;
     height: 100vh;
 
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(131, 174, 255, 0.219);
     position: absolute;
     top: 0;
 
@@ -21,7 +21,7 @@
     justify-content: center;
     align-items: center;
 
-    transition: background-color 1s;
+    transition: all 1s;
 }
 
 .modalForm{
@@ -49,10 +49,32 @@
         padding: 10px 5px;
         border-radius: 10px;
         text-align: center;
-        border: 1px solid #d90429;
+        border: 1px solid #4E73DE;
         
         &:focus{
-            outline: 1px solid #ef233c;
+            outline: 1px solid #4E73DE;
         }
     }
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+
+    button {
+        width: 100px;
+        border-radius: 10px;
+        border: 2px solid #4E73DE;
+        padding: 10px 15px;
+        background-color: transparent;
+        cursor: pointer;
+        transition: all .5s;
+
+        &:hover{
+            background-color: #4E73DE;
+            color: white;
+            transition: all 1s;
+        }
+    };
 }

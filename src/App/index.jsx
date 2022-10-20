@@ -1,6 +1,7 @@
 import React from 'react';
 
 //Import of needed templates
+import { Header } from '@templates/Header';
 import { ToDoContainer } from '@templates/toDoContainer';
 
 //Import components
@@ -19,7 +20,13 @@ const App = () => {
 
     return(
         <React.Fragment>
+
+            <Header/>
+
             <ToDoContainer/>
+
+            {/* Header */}
+
 
             {/* Modal to add a toDo */}
             <Modal isShow={modalAddToDo} closeModal={ setModalAddToDo } type={0}/>

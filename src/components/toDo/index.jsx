@@ -23,6 +23,7 @@ const ToDo = ({ element, index, fCompleted, fDelete  }) => {
             <button
                 className={`${toDoSimbols}`}
                 onClick={() => fCompleted(index)}
+                style={{ opacity: (!completed) ? '1' : '0.2' }}
             >✅</button>
             
             <h1 className={completed ? completedS : incompletedS }>{name}</h1>
@@ -30,6 +31,7 @@ const ToDo = ({ element, index, fCompleted, fDelete  }) => {
             <button 
                 className={`${toDoSimbols}`}
                 onClick={handleDelete}
+                style={{ opacity: (completed) ? '1' : '0.2' }}
             >❌</button>
         </div>
     );
